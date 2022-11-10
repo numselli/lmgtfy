@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>LMGTFY</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="keywords" content="lmgtfy">
+    <meta name="description" content="Teach your friends how to Google." />
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta property="og:title" content="Here, Let Me Google That For You">
+    <meta property="og:site_name" content="LMGTFY">
+    <meta property="og:url" content="https://lmgtfy.numselli.xyz/">
+    <meta name="og:description" content="Teach your friends how to Google." />
+    <meta property="og:description" content="Teach your friends how to Google." />
+    <meta http-equiv="content-language" content="en" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <!-- scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/fonts/open_sans/open_sans.min.css">
+    <link rel="stylesheet" href="/assets/css/style.min.css">
+
+    <noscript>
+      <style>
+        .shortened-url-result,.url-output,#search-form{display: none;}
+      </style>
+    </noscript>
+  </head>
+
+  <body onload="updateTitle()">
+    <script type="text/javascript">
+      function updateTitle(){document.title=document.URL.includes("?q=")?ecodeURIComponent(document.URL.split("?q=")[1])+" - LMGTFY":"LMGTFY"}function startDictation(){if(!window.hasOwnProperty('webkitSpeechRecognition')){return}const recognition=new webkitSpeechRecognition();recognition.continuous=false;recognition.interimResults=false;recognition.lang="en-US";recognition.start();recognition.onresult=function(e){document.getElementById('search-input').value=e.results[0][0].transcript;recognition.stop();GoSearch()};recognition.onerror=function(e){recognition.stop()}}function copyText(){const text=document.getElementById("url-result");text.select();text.setSelectionRange(0,99999);document.execCommand("copy");alert("Success! Copied Link: "+text.value+"        Now Share it!")}function GoSearch(){document.getElementById("url-output").style.display="block";document.getElementById("instructions2").innerHTML="Done! <a href=#  onclick=\"copyText();\" style=\"color:#fff\"><U>Copy</U></a> Or <a href=\"#previewsearchbox\" onclick=\"GoPreview();\" style=\"color:#fff\" id=\"previewgeneratedlink\" title=\"Preview Search\" ><u>Preview Search</u></a><a href=\"#url-output\"><div class=\"arrow bounce\"></div></a>";document.getElementById("url-output").value="https://lmgtfy.numselli.xyz?q="+document.getElementById("search-input").value;document.getElementById("url-result").value="https://lmgtfy.numselli.xyz?q="+encodeURIComponent(document.getElementById("search-input").value)}function GoPreview(){document.getElementById("previewsearchbox").style.display="block";document.getElementById("iframepreviewscreen").src="https://lmgtfy.numselli.xyz?q="+document.getElementById("search-input").value}$(function(){$("form").on("submit",function(e){e.preventDefault()});$("input").on("keyup",function(e){if(e.keyCode===13){$('#search-input').autocomplete('close');addcorners();GoSearch();window.scrollTo(0,document.body.scrollHeight)}})});var google_suggest_url="https://suggestqueries.google.com/complete/search?client=chrome&q=";$(function(){$("#search-input").autocomplete({source:function(request,response){var temp_arr=request.term.split(/[.,]+/);var search_sentence=temp_arr[temp_arr.length-1];$.ajax({url:google_suggest_url+search_sentence,dataType:"jsonp",success:function(data){response($.map(data[1],function(v,i){return{value:v}}));document.getElementsByClassName("ui-menu-item")?.[0].addEventListener("click",entersim);document.getElementsByClassName("ui-menu-item")?.[1].addEventListener("click",entersim);document.getElementsByClassName("ui-menu-item")?.[2].addEventListener("click",entersim);document.getElementsByClassName("ui-menu-item")?.[3].addEventListener("click",entersim);document.getElementsByClassName("ui-menu-item")?.[4].addEventListener("click",entersim);document.getElementsByClassName("ui-menu-item")?.[5].addEventListener("click",entersim);document.getElementsByClassName("ui-menu-item")?.[6].addEventListener("click",entersim);document.getElementsByClassName("ui-menu-item")?.[7].addEventListener("click",entersim)},error:function(data){console.log("ERROR");console.log(data)}})}})});function entersim(){e=jQuery.Event("keypress");e.which=13;$("#search-input").keypress(function(){addcorners();GoSearch()}).trigger(e)}function removecorners(){if(document.getElementById("search-input").value==""){$('#search-input').autocomplete('close');addcorners()}else{document.getElementById("search-form").style.borderBottomRightRadius="0px";document.getElementById("search-form").style.borderBottomLeftRadius="0px";document.getElementById("search-form").style.border="0px";document.getElementById("search-form").style.boxShadow="0 6px 12px rgba(0, 0, 0, 0.175)"}}function addcorners(){document.getElementById("search-form").style.borderBottomRightRadius="25px";document.getElementById("search-form").style.borderBottomLeftRadius="25px";document.getElementById("search-form").style.border="1px solid #cccccc";document.getElementById("search-form").style.boxShadow="0 0px 0px rgba(0, 0, 0, 0.175)";}
+    </script>
+    <script src="/assets/js/script.min.js"></script>
+    <script src="/assets/js/typetype.min.js"></script>
+    <style>
+      .ui-autocomplete{position:absolute;top:100%;z-index:1000;display:none;float:left;width:562px;padding:0 57px 0 12px !important;left:50% !important;-webkit-transform:translateX(-50%);-moz-transform:translateX(-50%);-ms-transform:translateX(-50%);-o-transform:translateX(-50%);transform:translateX(-50%);list-style:none;font-size:18px;text-align:left;background-color:#ffffff;border:0 solid #cccccc;border:0 solid rgba(0, 0, 0, 0.15);border-bottom-left-radius:25px;border-bottom-right-radius:25px;-webkit-box-shadow:0 6px 12px rgba(0, 0, 0, 0.175);box-shadow:0 6px 12px rgba(0, 0, 0, 0.175);background-clip:padding-box}@media screen and (max-width:650px){.ui-autocomplete{position:absolute;top:100%;z-index:1000;display:none;float:left;width:240px;padding:5px 0;list-style:none;font-size:18px;text-align:left;background-color:#ffffff;border:0 solid #cccccc;border:0 solid rgba(0, 0, 0, 0.15);border-bottom-left-radius:25px;border-bottom-right-radius:25px;-webkit-box-shadow:0 6px 12px rgba(0, 0, 0, 0.175);box-shadow:0 6px 12px rgba(0, 0, 0, 0.175);background-clip:padding-box}}.ui-autocomplete > li > div{display:block;padding:3px 20px;clear:both;font-weight:normal;line-height:1.42857143;color:#333333;white-space:nowrap}.ui-state-active,.ui-state-focus,.ui-state-hover{text-decoration:none;color:#262626;background-color:#f5f5f5;cursor:pointer}
+    </style>
+
+    <h1 class="main-header">
+      <a href="https://lmgtfy.numselli.xyz" class="ddg-logo-link ddg-logo-container">
+        <img alt="Google logo" style="height: 92dp;width:279dp" src="/assets/images/googlelogo_color_272x92dp.png"
+          class="ddg-logo" id="ddg-logo">
+      </a>
+
+      <!-- header -->
+      Here, Let Me Google That For You...
+    </h1>
+
+    <!-- search bar -->
+    <div class="search-container">
+      <noscript>
+        <form id="search-form-no-js" class="search-form" name="search">
+          <img alt="cursor" id="cursor" class="cursor">
+          <label>Search
+            <input autofocus autocorrect="off" autocapitalize="off" spellcheck="false" id="search-input0"
+              class="search-input" autocomplete="off" name="q" value="" type="text">
+          </label>
+          <input type="submit" value="S" id="search-submit" class="search-submit icon-search">
+        </form>
+      </noscript>
+
+      <form id="search-form" class="search-form" name="search">
+        <img alt="cursor" id="cursor" class="cursor">
+        <label>Search
+          <input oninput="removecorners();" onfocusout="addcorners();" spellcheck="false" autofocus autocorrect="off"
+            autocapitalize="off" id="search-input" class="search-input" autocomplete="off" name="q" value=""
+            type="search">
+        </label>
+        <img id="voicebox" value="S" class="search-submit icon-search" onclick="startDictation()"
+          src="/assets/images/googlemic_color_24dp.png" alt="Search by voice"
+          style="width: 28px;height:28px;padding-top:5px;display: block;">
+      </form>
+    </div>
+
+    <BR><BR>
+    <BR><BR>
+    <input id='search-submit' onclick='GoSearch();' myrel='localize[search_button]' type='button'
+      value='Google Search' />&nbsp;&nbsp;
+    <input id='lucky' onclick='GoSearch();' rel='localize[lucky_button]' type='button' value="I'm Feeling Lucky" />
+
+    <CENTER>
+      <div id='instructions'>
+        <div id='instructions2'>
+
+        </div>
+      </div>
+    </CENTER>
+
+    <!-- the url to share -->
+    <div class="url-result-container search-container">
+      <form style="border:0px;" class="search-form url-output-form">
+        <noscript>
+          <span class="no-js-url-output">Please enable JavaScript to share your search.</span>
+        </noscript>
+
+        <div id="url-output" style="display:none">
+          <output for="search-input" name="url-output" class="url-output">
+            <label for="url-result" class="url-result-label"></label>
+            <input
+              style="border-radius:2px;border-color:#4FE9F9 !important;font-size:12px;min-width:300px;max-width:100%;"
+              width="100%" id="url-result" class="search-input url-result">
+          </output>
+        </div>
+      </form>
+
+      <center>
+        <div id="previewsearchbox" style="display:none;transform:scale(.5); transform-origin: 0 0;"><BR>
+          <div style="width:200%;padding:5px; border:0px solid #ccc; background-color:#4FE9F9;color:#fff;font-size:26px;">
+            <b>Preview Search:</b>
+          </div>
+          <iframe id="iframepreviewscreen" style="border:5px solid #4FE9F9;" src="" width="200%" height="600px">
+          </iframe>
+        </div>
+      </center>
+
+      <div id="footer" style="color: #000">
+        <CENTER>
+          <p>
+            <font size="1px">This site is not associated with Google in any way. GOOGLE is a trademark of Google Inc.
+            </font>
+          </p>
+        </CENTER>
+      </div>
+    </div>
+  </body>
+</html>
